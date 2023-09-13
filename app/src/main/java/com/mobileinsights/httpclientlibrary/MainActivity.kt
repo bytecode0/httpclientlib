@@ -23,8 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mobileinsights.httpclient.HttpClientResponse
-import com.mobileinsights.httpclient.httpGet
+import com.mobileinsights.httpclient.get
 import com.mobileinsights.httpclientlibrary.ui.theme.HttpClientLibraryTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +48,7 @@ fun GetItems(modifier: Modifier = Modifier) {
     val amiiboList = remember { mutableStateOf<List<AmiiboItem>>(listOf()) }
     Column {
         Button(onClick = {
-            httpGet(
+            get(
                 endpoint = "https://www.amiiboapi.com/api/amiibo/",
                 onSuccess = {
                     if (it.responseCode == 200) {
